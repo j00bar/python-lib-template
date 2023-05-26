@@ -1,0 +1,41 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.2.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files
+    args: ["--maxkb=1500"]
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-merge-conflict
+  - id: debug-statements
+  - id: detect-aws-credentials
+  - id: detect-private-key
+  - id: requirements-txt-fixer
+- repo: https://github.com/psf/black
+  rev: 22.3.0
+  hooks:
+  - id: black
+    args: ["--config", "pyproject.toml"]
+- repo: https://github.com/charliermarsh/ruff-pre-commit
+  rev: 'v0.0.254'
+  hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
+- repo: https://github.com/RobertCraigie/pyright-python
+  rev: v1.1.301
+  hooks:
+    - id: pyright
+- repo: https://github.com/pycqa/bandit
+  rev: "1.7.0"
+  hooks:
+  - id: bandit
+    args: ["-r", "-ll", "-ii"]
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.3.1
+  hooks:
+  -   id: pyupgrade
+      args:
+        - "--py311-plus"
